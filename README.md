@@ -28,8 +28,12 @@ To enter the virtual environment. Then use:
 ```
 pip install -r requirements.txt
 ```
-To install any requirements needed. Finally, to actually run the app, make sure you are in the base directory and run:
+To install any requirements needed. Finally, to actually run the app, make sure you are in the base directory and run once:
 ```
-python -m flask -app app.py run
+set FLASK_ENV=development && set FLASK_APP=app.py
+```
+And then simply run:
+```
+python app.py
 ```
 This should begin the app, and says what local URL it is running on. 
