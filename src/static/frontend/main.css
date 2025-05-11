@@ -1,0 +1,163 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+}
+
+.taskbar {
+    background-color: #fff; /* White taskbar */
+    color: #333; /* Dark text in taskbar for contrast */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.taskbar img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.taskbar .left {
+    display: flex;
+    align-items: center;
+}
+
+.status {
+    color: limegreen;
+}
+
+.status.disconnected {
+    color: red;
+}
+
+/* Container for the graphs */
+.graphs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    height: 40vh;
+    align-items: stretch; /* Ensure children stretch to equal height */
+}
+.chart-box {
+    background: white; /* Match 3D box */
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 48%;
+    height: 95%;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Box for the 3D CubeSat animation */
+.cubeSatBox {
+    width: 48%; /* Take 48% of the screen width */
+    height: 100%; /* Full height for CubeSat box */
+    background-color: white; /* Dark background for the CubeSat box */
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+/* Title for CubeSat */
+.cubeSatTitle {
+    color: #444;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.velocityDials {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.dial {
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+}
+
+.axis-label {
+    color: #666;
+}
+
+.timing {
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.state_sat {
+    padding-left: 20px;
+}
+
+.state-container {
+    display: flex;
+    flex-direction: row; /* Place elements in a horizontal row */
+    justify-content: space-between;
+}
+
+.WOD-box {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+    color: #808080;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.wod-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.wod-item {
+    flex: 1 1 200px;
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0f0;
+}
+
+.wod-label {
+    font-size: 14px;
+    color: #aaa;
+    font-weight: normal;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.demo {
+    padding-left: 50px;
+    color: red;
+}

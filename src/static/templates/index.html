@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lunatics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend/main.css') }}">
+</head>
+<body>
+    <div class="taskbar">
+        <div class="left">
+            <img src="{{ url_for('static', filename='images/main-logo.png') }}" alt="Logo" />
+            <div>LUNATICS-0 Ground Station</div>
+            <div id="timing" class="timing">-:--</div>
+            <div class="state-container"></div>
+            <div class="state_sat">State <div id="state_sat">Nominal</div></div>
+            <div class="demo">[ DEMO ]</div>
+        </div>
+        <div id="status" class="status">Connected</div>
+    </div>
+</body>
+</html>

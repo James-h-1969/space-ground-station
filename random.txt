@@ -1,0 +1,38 @@
+
+    <div class="graphs">
+        <div class="chart-box">
+            <div class="cubeSatTitle">Current Payload Reading</div>
+            <canvas id="dataChart"></canvas>
+        </div>
+
+        <div class="cubeSatBox">
+            <div class="cubeSatTitle">Attitude of the Satellite</div>
+            <canvas id="satelliteCanvas" style="width: 120%; height: 100%;"></canvas>
+            <div class="velocityDials">
+                <div class="dial"><span class="axis-label">DX:</span> <span id="velX">0.00</span> m/s</div>
+                <div class="dial"><span class="axis-label">DY:</span> <span id="velY">0.00</span> m/s</div>
+                <div class="dial"><span class="axis-label">DZ:</span> <span id="velZ">0.00</span> m/s</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="WOD-box">
+        <div class="cubeSatTitle">WOD Data</div>
+        <div class="wod-row">
+            <div id="batt-voltage"></div>
+            <div id="batt-current"></div>
+            <div id="3v3-current"></div>
+            <div id="5v-current"></div>
+            <div id="comm-temp"></div>
+            <div id="eps-temp"></div>
+            <div id="batt-temp"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/3d-sat.js"></script>
+    <script src="/static/js/ground_trace.js"></script>
+    <script src="/static/js/helpers.js"></script>
+    <script src="/static/js/wod_data.js"></script>

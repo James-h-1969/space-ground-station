@@ -1,0 +1,44 @@
+### GENERATED GIT IGNORE
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+.env
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python environment files
+*.env
+*.venv
+
+# Frontend build artifacts (if any)
+node_modules/
+dist/
+build/
+
+# Flask cache
+instance/
+*.db
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore test coverage and profiling files
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+.cache/
