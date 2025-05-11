@@ -1,27 +1,26 @@
 from flask import Blueprint, request, jsonify
+from src.models import PayloadData
+from src.schemas import DataType
+from src.service import store_vals_in_db
 
-routes_bp = Blueprint('routes_bp', __name__)
+routes_bp = Blueprint("routes_bp", __name__)
+
 
 @routes_bp.route("/data", methods=["POST"])
 def receive_data():
-    data = request.get_json()
-    store.update_data(data)
-    return jsonify({"status":"success"})
+    time_utc = request.json.get("time_utc")
+    data = request.json.get("data")
+    data_type = request.json.get("data_type")
 
-@routes_bp.route('/api/payload_data')
-def get_payload_data():
-    if store.get_data():
-        return jsonify(store.get_data()[-1]["payload_data"])
-    else:
-        return []
-    
-@routes_bp.route('/api/wod_data')
-def get_wod_data():
-    if store.get_data():
-        return jsonify(store.get_data()[-1]["wod_data"])
-    else:
-        return []
+    if not data or not data_type or not time_utc:
+        return jsonify({"error": "Missing data or data_type"}), 400
 
-@routes_bp.route('/api/status')
-def status():
-    return jsonify({"connected": store.is_connected()})
+    try:
+        DataType(data_type)
+    except ValueError:
+        return jsonify({"error": "Invalid data type"}), 400
+
+    if store_vals_in_db(data, data_type, time_utc):
+        return jsonify({"status": "saved into db successfully"})
+    else:
+        return jsonify({"status": "failed to save into db"})
