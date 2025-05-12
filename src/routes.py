@@ -1,9 +1,14 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from src.models import PayloadData
 from src.schemas import DataType
 from src.service import store_vals_in_db
 
 routes_bp = Blueprint("routes_bp", __name__)
+
+
+@routes_bp.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
 
 
 @routes_bp.route("/data", methods=["POST"])

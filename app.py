@@ -11,10 +11,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 
-# Register blueprints or routes
-import src.routes as routes
-
-app.register_blueprint(routes.routes_bp)
+# Register blueprints or routes - moved to avoid circular imports
+from src.routes import routes_bp
+app.register_blueprint(routes_bp)
 
 with app.app_context():
     db.create_all()

@@ -1,6 +1,6 @@
 from src.schemas import DataType
 from src.models import PayloadData
-from app import db
+from src.database import db  # Import db from database.py instead of app.py
 
 
 def get_current_time():
