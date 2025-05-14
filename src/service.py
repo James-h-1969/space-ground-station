@@ -4,10 +4,6 @@ from src.database import db
 from datetime import datetime
 
 
-def get_current_time():
-    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-
 def store_vals_in_db(data, data_type, time_utc):
     data_type = DataType(data_type)
 
@@ -33,7 +29,7 @@ def store_vals_in_db(data, data_type, time_utc):
             spec_900nm=data[16],
             spec_940nm=data[17],
         )
-    # elif data_type == DataType.ATTITUDE_DATA:
+    # elif data_type == DataType.ATTITUDE_DATA: TODO. write new data for these 
 
     # elif data_type == DataType.WOD_DATA:
     #     ...

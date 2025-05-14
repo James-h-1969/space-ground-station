@@ -48,3 +48,9 @@ class PayloadData(db.Model):
             "spec_900nm": self.spec_900nm,
             "spec_940nm": self.spec_940nm,
         }
+    
+class WODData(db.Model):
+    ... #TODO. write a wod model
+
+class AttitudeData(db.Model):
+    ... #TODO. write an attitude model
