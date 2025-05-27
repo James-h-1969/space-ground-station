@@ -113,6 +113,11 @@ canvas {
 
 .state_sat {
     padding-left: 20px;
+    cursor:pointer;
+}
+
+.stateSelect{
+    cursor:pointer;
 }
 
 .state-container {

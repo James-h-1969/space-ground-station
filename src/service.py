@@ -1,8 +1,9 @@
-from src.schemas import DataType
+from src.schemas import DataType, State
 from src.models import PayloadData
 from src.database import db
-from datetime import datetime
+from datetime import datetime, timezone
 
+current_state = State.INIT
 
 def store_vals_in_db(data, data_type, time_utc):
     data_type = DataType(data_type)
@@ -41,3 +42,15 @@ def store_vals_in_db(data, data_type, time_utc):
     except Exception as e:
         print(f"Error: {e}")
         return False
+    
+def get_state():
+    return current_state.value
+
+def change_state(state):
+    global current_state
+    current_state = State(state)
+
+def get_current_utc_time():
+    current_utc_time = datetime.now(timezone.utc)
+    utc_string = current_utc_time.strftime("%Y-%m-%d %H:%M:%S")
+    return utc_string
