@@ -10,5 +10,4 @@ class State(Enum):
     INIT = "INIT"
     NOMINAL = "NOMINAL"
     PAYLOAD = "PAYLOAD"
-    TX = "TX"
     DETUMBLING = "DETUMBLING"
