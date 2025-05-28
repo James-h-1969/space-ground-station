@@ -54,3 +54,40 @@ def get_current_utc_time():
     current_utc_time = datetime.now(timezone.utc)
     utc_string = current_utc_time.strftime("%Y-%m-%d %H:%M:%S")
     return utc_string
+
+def get_payload_data():
+    try:
+        latest_data = db.session.query(PayloadData).order_by(PayloadData.timestamp.desc()).first()
+        
+        if not latest_data:
+            print("No payload data found in the database.")
+            return None
+        
+        spectral_values = [
+            latest_data.spec_410nm,
+            latest_data.spec_435nm,
+            latest_data.spec_460nm,
+            latest_data.spec_485nm,
+            latest_data.spec_510nm,
+            latest_data.spec_535nm,
+            latest_data.spec_560nm,
+            latest_data.spec_585nm,
+            latest_data.spec_610nm,
+            latest_data.spec_645nm,
+            latest_data.spec_680nm,
+            latest_data.spec_705nm,
+            latest_data.spec_730nm,
+            latest_data.spec_760nm,
+            latest_data.spec_810nm,
+            latest_data.spec_860nm,
+            latest_data.spec_900nm,
+            latest_data.spec_940nm,
+        ]
+
+        ts = latest_data.timestamp
+
+        return [ts, spectral_values]
+        
+    except Exception as e:
+        print(f"Error retrieving payload data: {e}")
+        return None
