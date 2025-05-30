@@ -196,3 +196,20 @@ canvas {
 .tab-content.active {
     display: block;
 }
+
+#wod-table {
+    width: 400px;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+#wod-table th,
+#wod-table td {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    text-align: left;
+}
+#wod-table th {
+    background-color: #eee;
+    font-weight: bold;
+    color: black;
+}

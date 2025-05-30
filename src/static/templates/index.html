@@ -27,7 +27,7 @@
     </div>
 
     <div class="tabs">
-        <div class="tab-button active" onclick="openTab(event, 'main')">Lunatics-0</div>
+        <div class="tab-button active" onclick="openTab(event, 'main')">LUNATICS-0</div>
         <div class="tab-button" onclick="openTab(event, 'payload')">Payload</div>
         <div class="tab-button" onclick="openTab(event, 'attitude')">Attitude</div>
         <div class="tab-button" onclick="openTab(event, 'wod')">WOD</div>
@@ -54,6 +54,18 @@
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
         <p>Display WOD-related information here.</p>
+        <table id="wod-table">
+            <tr><th>Metric</th><th>Value</th></tr>
+            <tr><td>Battery Voltage</td><td id="batt-voltage">—</td></tr>
+            <tr><td>Battery Current</td><td id="batt-current">—</td></tr>
+            <tr><td>3.3V Current</td><td id="3v3-current">—</td></tr>
+            <tr><td>5V Current</td><td id="5v-current">—</td></tr>
+            <tr><td>Comm Temp</td><td id="comm-temp">—</td></tr>
+            <tr><td>EPS Temp</td><td id="eps-temp">—</td></tr>
+            <tr><td>Battery Temp</td><td id="batt-temp">—</td></tr>
+        </table>
+
+        <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
     </div>
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>
