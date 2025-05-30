@@ -1,15 +1,30 @@
 function plotSpectrums() {
+    const currentState = document.getElementById('stateSelect').value;
+
+    const intensityCanvas = document.getElementById("intensitySpectrum");
+    const absorptionCanvas = document.getElementById("absorptionSpectrum");
+    const ctx1 = intensityCanvas.getContext("2d");
+    const ctx2 = absorptionCanvas.getContext("2d");
+
+    // If not in PAYLOAD mode
+    if (currentState !== "PAYLOAD") {
+        ctx1.clearRect(0, 0, intensityCanvas.width, intensityCanvas.height);
+        ctx2.clearRect(0, 0, absorptionCanvas.width, absorptionCanvas.height);
+
+        ctx1.fillStyle = "red";
+        ctx1.font = "16px sans-serif";
+        ctx1.textAlign = "center";
+        ctx1.textBaseline = "middle";
+        ctx1.fillText("Set satellite to PAYLOAD mode to display results.", intensityCanvas.width / 2, intensityCanvas.height / 2);
+
+        return;
+    }
     fetch("/payload")
         .then(res => res.json())
         .then(data => {
             const [timestamp, rawValues] = data.payload_data;
             const wavelengths = [410, 435, 460, 485, 510, 535, 560, 585, 610, 645, 680, 705, 730, 760, 810, 860, 900, 940];
             const readings = rawValues.map(Number);
-
-            const intensityCanvas = document.getElementById("intensitySpectrum");
-            const absorptionCanvas = document.getElementById("absorptionSpectrum");
-            const ctx1 = intensityCanvas.getContext("2d");
-            const ctx2 = absorptionCanvas.getContext("2d");
 
             const canvasWidth = intensityCanvas.width;
             const canvasHeight = intensityCanvas.height;
