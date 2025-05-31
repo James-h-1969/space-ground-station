@@ -8,6 +8,7 @@ __pycache__/
 
 # Virtual environment
 venv/
+ven/
 .env
 
 # VS Code settings
