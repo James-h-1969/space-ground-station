@@ -37,4 +37,4 @@ if __name__ == "__main__":
         payload = generate_fake_payload()
         response = send_data(payload, "PAYLOAD_DATA")
         print(f"Sent data: {payload}, Response: {response.__dict__}")
-        time.sleep(5)
+        time.sleep(1)

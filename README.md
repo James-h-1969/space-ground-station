@@ -1,5 +1,5 @@
 # LUNATICS GUI
-This GUI will be used in order to display the results from the LUNATIC-0.
+This GUI will be used in order to display the results from the LUNATICS-0.
 
 ### Structure of the repo
 The main code to change is within `src`. 

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template
 from src.models import PayloadData
 from src.schemas import DataType
-from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time
+from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time, get_payload_data
 
 routes_bp = Blueprint("routes_bp", __name__)
 
@@ -45,3 +45,8 @@ def change_current_state():
 @routes_bp.route("/utc_time", methods=["GET"])
 def get_utc_time():
     return jsonify({"status":"success", "utc_time":get_current_utc_time()})
+
+@routes_bp.route("/payload", methods=["GET"])
+def get_most_recent_payload():
+    payload_data = get_payload_data()
+    return jsonify({"status":"success", "payload_data":payload_data})

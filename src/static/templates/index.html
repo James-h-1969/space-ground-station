@@ -19,6 +19,7 @@
                     <option value="PAYLOAD">PAYLOAD</option>
                     <option value="DETUMBLING">DETUMBLING</option>
                 </select>
+                <div id="actualState"></div>
                 <button onclick="updateState()">Set State</button>
             </div>
             <div class="demo">[ DEMO ]</div>
@@ -41,11 +42,25 @@
     </div>
     <div id="payload" class="tab-content">
         <h2>Payload Data</h2>
+        <script src="{{ url_for('static', filename='frontend/graphs/payload.js') }}"></script>
         <p>Display payload-related information here.</p>
+        <canvas id="intensitySpectrum" width="800" height="200"></canvas>
+        <canvas id="absorptionSpectrum" width="800" height="50"></canvas>
+        <!-- <button onclick="plotSpectrums()">Refresh Plot</button> -->
     </div>
     <div id="attitude" class="tab-content">
         <h2>Attitude Data</h2>
         <p>Display attitude-related information here.</p>
+        <canvas id="satelliteCanvas" width="800" height="400"></canvas>
+
+    <div class="velocity-display">
+        <p><strong>Velocity (m/s):</strong></p>
+        <p>X: <span id="velX">0.00</span></p>
+        <p>Y: <span id="velY">0.00</span></p>
+        <p>Z: <span id="velZ">0.00</span></p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
