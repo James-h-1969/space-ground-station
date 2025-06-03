@@ -1,6 +1,6 @@
 // update
 function updateWOD(data) {
-    document.getElementById("mode").innerText = `${data.mode}`;
+    // document.getElementById("mode").innerText = `${data.mode}`;
     // document.getElementById("batt-voltage").innerText = `${data["bat-voltage"].toFixed(2)} V`;
     // document.getElementById("batt-current").innerText = `${data["bat-current"].toFixed(2)} A`;
     const voltage = data["bat-voltage"];
@@ -9,8 +9,14 @@ function updateWOD(data) {
     const current = data["bat-current"];
     document.getElementById("batt-current").innerText = `${current.toFixed(2)} A`;
     setSliderPosition("batt-current-slider", current, -2, 2);
-    document.getElementById("3v3-current").innerText = `${data["3v3-current"].toFixed(2)} A`;
-    document.getElementById("5v-current").innerText = `${data["5v-current"].toFixed(2)} A`;
+    const current3v3 = data["3v3-current"];
+    document.getElementById("3v3-current").innerText = `${current3v3.toFixed(2)} A`;
+    setSliderPosition("3v3-current-slider", current3v3, 0, 2);
+
+    const current5v = data["5v-current"];
+    document.getElementById("5v-current").innerText = `${current5v.toFixed(2)} A`;
+    setSliderPosition("5v-current-slider", current5v, 0, 2);
+
     const commTemp = data["comm-temp"];
     document.getElementById("comm-temp").innerText = `${commTemp.toFixed(1)} °C`;
     document.getElementById("comm-temp").className = `temp-value ${commTemp >= -30 && commTemp <= 85 ? 'green' : 'red'}`;

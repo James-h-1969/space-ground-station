@@ -68,10 +68,10 @@
         <h2>WOD Data</h2>
         <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
 
-        <div class="wod-group state-group">
+        <!-- <div class="wod-group state-group">
             <h3>Operational State</h3>
             <div id="mode" class="wod-value">--</div>
-        </div>
+        </div> -->
 
         <div class="wod-group battery-group">
             <h3>Battery</h3>
@@ -107,13 +107,32 @@
 
         <div class="wod-group bus-group">
             <h3>Bus Currents</h3>
-            <div class="label">3.3V Current</div>
-            <div class="bar-container"><div id="3v3-current-bar" class="bar"></div></div>
-            <div id="3v3-current" class="wod-value">--</div>
 
+            <!-- 3.3V Current -->
+            <div class="label">3.3V Current</div>
+            <div id="3v3-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="0" data-max="2">
+                    <div id="3v3-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+            </div>
+
+            <!-- 5V Current -->
             <div class="label">5V Current</div>
-            <div class="bar-container"><div id="5v-current-bar" class="bar"></div></div>
-            <div id="5v-current" class="wod-value">--</div>
+            <div id="5v-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="0" data-max="2">
+                    <div id="5v-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+            </div>
         </div>
 
         <div class="wod-group temp-group">
