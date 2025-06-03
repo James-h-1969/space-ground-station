@@ -1,8 +1,14 @@
 // update
 function updateWOD(data) {
     document.getElementById("mode").innerText = `${data.mode}`;
-    document.getElementById("batt-voltage").innerText = `${data["bat-voltage"].toFixed(2)} V`;
-    document.getElementById("batt-current").innerText = `${data["bat-current"].toFixed(2)} A`;
+    // document.getElementById("batt-voltage").innerText = `${data["bat-voltage"].toFixed(2)} V`;
+    // document.getElementById("batt-current").innerText = `${data["bat-current"].toFixed(2)} A`;
+    const voltage = data["bat-voltage"];
+    document.getElementById("batt-voltage").innerText = `${voltage.toFixed(2)} V`;
+    setSliderPosition("batt-voltage-slider", voltage, 0, 4.5);
+    const current = data["bat-current"];
+    document.getElementById("batt-current").innerText = `${current.toFixed(2)} A`;
+    setSliderPosition("batt-current-slider", current, -2, 2);
     document.getElementById("3v3-current").innerText = `${data["3v3-current"].toFixed(2)} A`;
     document.getElementById("5v-current").innerText = `${data["5v-current"].toFixed(2)} A`;
     const commTemp = data["comm-temp"];

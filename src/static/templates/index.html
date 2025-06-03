@@ -75,13 +75,34 @@
 
         <div class="wod-group battery-group">
             <h3>Battery</h3>
-            <div class="label">Voltage</div>
-            <div class="bar-container"><div id="batt-voltage-bar" class="bar"></div></div>
-            <div id="batt-voltage" class="wod-value">--</div>
 
+            <!-- Battery Voltage -->
+            <div class="label">Voltage</div>
+            <div id="batt-voltage" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track voltage-track" data-min="0" data-max="4.5">
+                    <div id="batt-voltage-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 V</span>
+                    <span style="left: 100%;">4.5 V</span>
+                </div>
+                
+            </div>
+
+            <!-- Battery Current -->
             <div class="label">Current</div>
-            <div class="bar-container"><div id="batt-current-bar" class="bar"></div></div>
-            <div id="batt-current" class="wod-value">--</div>
+            <div id="batt-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="-2" data-max="2">
+                    <div id="batt-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">-2 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+                
+            </div>
         </div>
 
         <div class="wod-group bus-group">

@@ -332,3 +332,56 @@ canvas {
 .temp-value.red {
     color: #f55;
 }
+
+.voltage-track {
+    background: linear-gradient(to right, red, blue);
+}
+
+/* Battery current: blue to yellow */
+.current-track {
+    background: linear-gradient(to right, red, blue);
+}
+
+.slider-track {
+    position: relative;
+    height: 14px;
+    border-radius: 7px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.slider-value {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: white;
+    z-index: 2;
+}
+
+.slider-wrapper {
+    margin-bottom: 6px;
+}
+
+.slider-labels {
+    position: relative;
+    height: 1.2em;
+    font-size: 0.8em;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    color: #aaa;
+}
+
+.slider-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.temp-value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-top: 4px;
+    color: #fff;
+}
