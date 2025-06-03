@@ -12,15 +12,18 @@
             <div>LUNATICS-0 Ground Station</div>
             <div id="utcTime" class="timing"></div>
             <div class="state-container"></div>
-            <div class="state_sat">State 
-                <select id="stateSelect">
-                    <option value="INIT">INIT</option>
-                    <option value="NOMINAL">NOMINAL</option>
-                    <option value="PAYLOAD">PAYLOAD</option>
-                    <option value="DETUMBLING">DETUMBLING</option>
-                </select>
-                <div id="actualState"></div>
-                <button onclick="updateState()">Set State</button>
+            <div class="state_sat">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem;">
+                    <label for="stateSelect" style="white-space: nowrap;">State:</label>
+                    <select id="stateSelect">
+                        <option value="INIT">INIT</option>
+                        <option value="NOMINAL">NOMINAL</option>
+                        <option value="PAYLOAD">PAYLOAD</option>
+                        <option value="DETUMBLING">DETUMBLING</option>
+                    </select>
+                    <button onclick="updateState()">Set State</button>
+                </div>
+                <div id="actualState" style="margin-top: 0.5rem;"></div>
             </div>
             <div class="reset_time">
                 <input type="datetime-local" id="timeSelect" step="1">
