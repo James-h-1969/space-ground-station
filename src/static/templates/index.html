@@ -49,25 +49,43 @@
         <p>Display payload-related information here.</p>
         <canvas id="intensitySpectrum" width="800" height="200"></canvas>
         <canvas id="absorptionSpectrum" width="800" height="50"></canvas>
-        <!-- <button onclick="plotSpectrums()">Refresh Plot</button> -->
     </div>
     <div id="attitude" class="tab-content">
         <h2>Attitude Data</h2>
         <p>Display attitude-related information here.</p>
         <canvas id="satelliteCanvas" width="800" height="400"></canvas>
 
-    <div class="velocity-display">
-        <p><strong>Velocity (m/s):</strong></p>
-        <p>X: <span id="velX">0.00</span></p>
-        <p>Y: <span id="velY">0.00</span></p>
-        <p>Z: <span id="velZ">0.00</span></p>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
+        <div class="velocity-display">
+            <p><strong>Velocity (m/s):</strong></p>
+            <p>X: <span id="velX">0.00</span></p>
+            <p>Y: <span id="velY">0.00</span></p>
+            <p>Z: <span id="velZ">0.00</span></p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
+        <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
         <p>Display WOD-related information here.</p>
+        <table id="wodTable" class="wod-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Operational Mode</td><td id="mode">--</td></tr>
+                <tr><td>Battery Voltage</td><td id="batt-voltage">--</td></tr>
+                <tr><td>Battery Current</td><td id="batt-current">--</td></tr>
+                <tr><td>3.3V Current</td><td id="3v3-current">--</td></tr>
+                <tr><td>5V Current</td><td id="5v-current">--</td></tr>
+                <tr><td>Comm Temp</td><td id="comm-temp">--</td></tr>
+                <tr><td>EPS Temp</td><td id="eps-temp">--</td></tr>
+                <tr><td>Battery Temp</td><td id="batt-temp">--</td></tr>
+            </tbody>
+        </table>
     </div>
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>
