@@ -17,6 +17,22 @@ async function updateState() {
     }
 }
 
+async function updateReset() {
+    const time = document.getElementById("timeSelect").value;
+    
+    const response = await fetch('/to_reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ time })
+    });
+
+    if (response.ok) {
+        alert("Resetting data!");
+    } else {
+        alert("Failed to reset data.");
+    }
+}
+
 async function fetchState() {
     const response = await fetch('/state');
     const data = await response.json();

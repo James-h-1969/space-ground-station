@@ -22,7 +22,10 @@
                 <div id="actualState"></div>
                 <button onclick="updateState()">Set State</button>
             </div>
-            <div class="demo">[ DEMO ]</div>
+            <div class="reset_time">
+                <input type="datetime-local" id="timeSelect" step="1">
+                <button onclick="updateReset()">Clear Science Data</button>
+            </div>
         </div>
         <div id="status" class="status">Connected</div>
     </div>

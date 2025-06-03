@@ -4,6 +4,8 @@ from src.database import db
 from datetime import datetime, timezone
 
 current_state = State.INIT
+to_reset = False
+reset_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def store_vals_in_db(data, data_type, time_utc):
     data_type = DataType(data_type)
@@ -109,3 +111,18 @@ def get_payload_data():
     except Exception as e:
         print(f"Error retrieving payload data: {e}")
         return None
+def get_to_reset():
+    global to_reset 
+    global reset_time
+    if to_reset:
+        reset_time_copy = reset_time
+        to_reset = not to_reset
+        reset_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        return True, reset_time_copy
+    return to_reset, reset_time
+
+def change_reset(time: str) -> None:
+    global to_reset
+    global reset_time
+    to_reset = True
+    reset_time = time 

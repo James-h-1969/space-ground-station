@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, render_template
 from src.models import PayloadData
 from src.schemas import DataType
-from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time, get_payload_data
+from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time, get_payload_data, get_to_reset, change_reset
 
 routes_bp = Blueprint("routes_bp", __name__)
 
@@ -50,3 +50,16 @@ def get_utc_time():
 def get_most_recent_payload():
     payload_data = get_payload_data()
     return jsonify({"status":"success", "payload_data":payload_data})
+@routes_bp.route("/to_reset", methods=["GET"])
+def to_reset():
+    to_reset, reset_time = get_to_reset()
+    return jsonify({"status":"success", "to_reset":to_reset, "reset_time":reset_time}), 200
+
+@routes_bp.route("/to_reset", methods=["POST"])
+def change_to_reset():
+    data = request.get_json()
+
+    if "time" in data:
+        change_reset(data["time"])
+        return jsonify({"message":"to reset successfully changed"})
+    return jsonify({"error": "No value provided"}), 400

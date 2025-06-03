@@ -196,3 +196,7 @@ canvas {
 .tab-content.active {
     display: block;
 }
+
+.reset_time {
+    padding-left: 20px;
+}
