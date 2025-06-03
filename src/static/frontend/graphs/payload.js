@@ -1,5 +1,5 @@
 function plotSpectrums() {
-    const currentState = document.getElementById('stateSelect').value;
+    const currentState = document.getElementById('actualState').value;
 
     const intensityCanvas = document.getElementById("intensitySpectrum");
     const absorptionCanvas = document.getElementById("absorptionSpectrum");

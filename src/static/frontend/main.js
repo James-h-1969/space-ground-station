@@ -6,6 +6,8 @@ async function updateState() {
         body: JSON.stringify({ state })
     });
 
+    document.getElementById("actualState").value = state;
+
     if (response.ok) {
         const data = await response.json();
         alert("State updated!");
