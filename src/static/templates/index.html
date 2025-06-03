@@ -67,25 +67,85 @@
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
         <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
-        <p>Display WOD-related information here.</p>
-        <table id="wodTable" class="wod-table">
-            <thead>
-                <tr>
-                    <th>Parameter</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Operational Mode</td><td id="mode">--</td></tr>
-                <tr><td>Battery Voltage</td><td id="batt-voltage">--</td></tr>
-                <tr><td>Battery Current</td><td id="batt-current">--</td></tr>
-                <tr><td>3.3V Current</td><td id="3v3-current">--</td></tr>
-                <tr><td>5V Current</td><td id="5v-current">--</td></tr>
-                <tr><td>Comm Temp</td><td id="comm-temp">--</td></tr>
-                <tr><td>EPS Temp</td><td id="eps-temp">--</td></tr>
-                <tr><td>Battery Temp</td><td id="batt-temp">--</td></tr>
-            </tbody>
-        </table>
+
+        <div class="wod-group state-group">
+            <h3>Operational State</h3>
+            <div id="mode" class="wod-value">--</div>
+        </div>
+
+        <div class="wod-group battery-group">
+            <h3>Battery</h3>
+            <div class="label">Voltage</div>
+            <div class="bar-container"><div id="batt-voltage-bar" class="bar"></div></div>
+            <div id="batt-voltage" class="wod-value">--</div>
+
+            <div class="label">Current</div>
+            <div class="bar-container"><div id="batt-current-bar" class="bar"></div></div>
+            <div id="batt-current" class="wod-value">--</div>
+        </div>
+
+        <div class="wod-group bus-group">
+            <h3>Bus Currents</h3>
+            <div class="label">3.3V Current</div>
+            <div class="bar-container"><div id="3v3-current-bar" class="bar"></div></div>
+            <div id="3v3-current" class="wod-value">--</div>
+
+            <div class="label">5V Current</div>
+            <div class="bar-container"><div id="5v-current-bar" class="bar"></div></div>
+            <div id="5v-current" class="wod-value">--</div>
+        </div>
+
+        <div class="wod-group temp-group">
+            <h3>Temperatures</h3>
+
+            <!-- Comm Temp -->
+            <div class="label">Comm Temp</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 13.3%; width: 76.67%;"></div>
+                    <div id="comm-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span>-50°C</span>
+                    <span class="nominal-label">-30°C</span>
+                    <span class="nominal-label">85°C</span>
+                    <span>100°C</span>
+                </div>
+                <div id="comm-temp" class="wod-value">--</div>
+            </div>
+
+            <!-- EPS Temp -->
+            <div class="label">EPS Temp</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 6.7%; width: 80%;"></div>
+                    <div id="eps-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span>-50°C</span>
+                    <span class="nominal-label">-40°C</span>
+                    <span class="nominal-label">80°C</span>
+                    <span>100°C</span>
+                </div>
+                <div id="eps-temp" class="wod-value">--</div>
+            </div>
+
+            <!-- Battery Temp -->
+            <div class="label">Battery Temp</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 20%; width: 53.33%;"></div>
+                    <div id="batt-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span>-50°C</span>
+                    <span class="nominal-label">-20°C</span>
+                    <span class="nominal-label">60°C</span>
+                    <span>100°C</span>
+                </div>
+                <div id="batt-temp" class="wod-value">--</div>
+            </div>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>

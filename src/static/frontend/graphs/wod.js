@@ -8,6 +8,10 @@ function updateWOD(data) {
     document.getElementById("comm-temp").innerText = `${data["comm-temp"].toFixed(1)} °C`;
     document.getElementById("eps-temp").innerText = `${data["eps-temp"].toFixed(1)} °C`;
     document.getElementById("batt-temp").innerText = `${data["batt-temp"].toFixed(1)} °C`;
+
+    setSliderPosition("comm-temp-slider", data["comm-temp"]);
+    setSliderPosition("eps-temp-slider", data["eps-temp"]);
+    setSliderPosition("batt-temp-slider", data["batt-temp"]);
 }
 
 
@@ -33,6 +37,13 @@ function fetchWODData() {
             }
         })
         .catch(err => console.error("Error fetching WOD data:", err));
+}
+
+function setSliderPosition(sliderId, value, min = -50, max = 100) {
+    const slider = document.getElementById(sliderId);
+    const clamped = Math.max(min, Math.min(value, max));
+    const percentage = ((clamped - min) / (max - min)) * 100;
+    slider.style.left = `${percentage}%`;
 }
 
 setInterval(fetchWODData, 2000); // Fetch every 2 seconds
