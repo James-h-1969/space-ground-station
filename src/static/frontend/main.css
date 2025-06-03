@@ -200,3 +200,188 @@ canvas {
 .reset_time {
     padding-left: 20px;
 }
+
+
+.wod-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+.wod-table th, .wod-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Header row */
+.wod-table thead th {
+  background-color: #f4f4f4;
+  color: black; 
+  font-weight: bold
+}
+
+/* Body rows */
+.wod-table tbody td {
+  color: white;  
+}
+
+.wod-group {
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #222;
+    color: white;
+}
+
+.wod-group h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.3em;
+}
+
+.label {
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    color: #aaa;
+}
+
+.wod-value {
+    margin-top: 0.2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #444;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background-color: #00ccff;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.slider-track {
+    position: relative;
+    background: linear-gradient(to right, darkred, green 40% 60%, darkred);
+    height: 14px;
+    border-radius: 7px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.slider-nominal {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0,255,0,0.25);
+    z-index: 1;
+    border-left: 1px solid greenyellow;
+    border-right: 1px solid greenyellow;
+}
+
+.slider-value {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: white;
+    z-index: 2;
+}
+
+.slider-labels {
+    position: relative;
+    height: 1.2em;
+    font-size: 0.8em;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    color: #aaa;
+}
+
+.slider-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.slider-labels .nominal-label {
+    color: #9f9;
+    font-weight: bold;
+}
+
+.temp-value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-top: 4px;
+}
+
+.temp-value.green {
+    color: #9f9;
+}
+
+.temp-value.red {
+    color: #f55;
+}
+
+.voltage-track {
+    background: linear-gradient(to right, red, blue);
+}
+
+/* Battery current: blue to yellow */
+.current-track {
+    background: linear-gradient(to right, red, blue);
+}
+
+.slider-track {
+    position: relative;
+    height: 14px;
+    border-radius: 7px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.slider-value {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background-color: white;
+    z-index: 2;
+}
+
+.slider-wrapper {
+    margin-bottom: 6px;
+}
+
+.slider-labels {
+    position: relative;
+    height: 1.2em;
+    font-size: 0.8em;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    color: #aaa;
+}
+
+.slider-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.temp-value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-top: 4px;
+    color: #fff;
+}

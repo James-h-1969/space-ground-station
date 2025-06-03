@@ -12,15 +12,18 @@
             <div>LUNATICS-0 Ground Station</div>
             <div id="utcTime" class="timing"></div>
             <div class="state-container"></div>
-            <div class="state_sat">State 
-                <select id="stateSelect">
-                    <option value="INIT">INIT</option>
-                    <option value="NOMINAL">NOMINAL</option>
-                    <option value="PAYLOAD">PAYLOAD</option>
-                    <option value="DETUMBLING">DETUMBLING</option>
-                </select>
-                <div id="actualState"></div>
-                <button onclick="updateState()">Set State</button>
+            <div class="state_sat">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.3rem;">
+                    <label for="stateSelect" style="white-space: nowrap;">State:</label>
+                    <select id="stateSelect">
+                        <option value="INIT">INIT</option>
+                        <option value="NOMINAL">NOMINAL</option>
+                        <option value="PAYLOAD">PAYLOAD</option>
+                        <option value="DETUMBLING">DETUMBLING</option>
+                    </select>
+                    <button onclick="updateState()">Set State</button>
+                </div>
+                <div id="actualState" style="margin-top: 0.5rem;"></div>
             </div>
             <div class="reset_time">
                 <input type="datetime-local" id="timeSelect" step="1">
@@ -49,26 +52,143 @@
         <p>Display payload-related information here.</p>
         <canvas id="intensitySpectrum" width="800" height="200"></canvas>
         <canvas id="absorptionSpectrum" width="800" height="50"></canvas>
-        <!-- <button onclick="plotSpectrums()">Refresh Plot</button> -->
     </div>
     <div id="attitude" class="tab-content">
         <h2>Attitude Data</h2>
         <p>Display attitude-related information here.</p>
         <canvas id="satelliteCanvas" width="800" height="400"></canvas>
 
-    <div class="velocity-display">
-        <p><strong>Velocity (m/s):</strong></p>
-        <p>X: <span id="velX">0.00</span></p>
-        <p>Y: <span id="velY">0.00</span></p>
-        <p>Z: <span id="velZ">0.00</span></p>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
+        <div class="velocity-display">
+            <p><strong>Velocity (m/s):</strong></p>
+            <p>X: <span id="velX">0.00</span></p>
+            <p>Y: <span id="velY">0.00</span></p>
+            <p>Z: <span id="velZ">0.00</span></p>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
-        <p>Display WOD-related information here.</p>
-    </div>
+        <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
+
+        <!-- <div class="wod-group state-group">
+            <h3>Operational State</h3>
+            <div id="mode" class="wod-value">--</div>
+        </div> -->
+
+        <div class="wod-group battery-group">
+            <h3>Battery</h3>
+
+            <!-- Battery Voltage -->
+            <div class="label">Voltage</div>
+            <div id="batt-voltage" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track voltage-track" data-min="0" data-max="4.5">
+                    <div id="batt-voltage-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 V</span>
+                    <span style="left: 100%;">4.5 V</span>
+                </div>
+                
+            </div>
+
+            <!-- Battery Current -->
+            <div class="label">Current</div>
+            <div id="batt-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="-2" data-max="2">
+                    <div id="batt-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">-2 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="wod-group bus-group">
+            <h3>Bus Currents</h3>
+
+            <!-- 3.3V Current -->
+            <div class="label">3.3V Current</div>
+            <div id="3v3-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="0" data-max="2">
+                    <div id="3v3-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+            </div>
+
+            <!-- 5V Current -->
+            <div class="label">5V Current</div>
+            <div id="5v-current" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track current-track" data-min="0" data-max="2">
+                    <div id="5v-current-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">0 A</span>
+                    <span style="left: 100%;">2 A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="wod-group temp-group">
+            <h3>Temperatures</h3>
+
+            <!-- Comm Temp -->
+            <div class="label">Comm Temp</div>
+            <div id="comm-temp" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 13.33%; width: 76.67%;"></div>
+                    <div id="comm-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">-50°C</span>
+                    <span class="nominal-label" style="left: 13.33%;">-30°C</span>
+                    <span class="nominal-label" style="left: 90%;">85°C</span>
+                    <span style="left: 100%;">100°C</span>
+                </div>
+            </div>
+
+            <!-- EPS Temp -->
+            <div class="label">EPS Temp</div>
+            <div id="eps-temp" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 6.67%; width: 80.00%;"></div>
+                    <div id="eps-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">-50°C</span>
+                    <span class="nominal-label" style="left: 6.67%;">-40°C</span>
+                    <span class="nominal-label" style="left: 86.67%;">80°C</span>
+                    <span style="left: 100%;">100°C</span>
+                </div>
+            </div>
+
+            <!-- Battery Temp -->
+            <div class="label">Battery Temp</div>
+            <div id="batt-temp" class="temp-value">--</div>
+            <div class="slider-wrapper">
+                <div class="slider-track" data-min="-50" data-max="100">
+                    <div class="slider-nominal" style="left: 20.00%; width: 53.33%;"></div>
+                    <div id="batt-temp-slider" class="slider-value"></div>
+                </div>
+                <div class="slider-labels">
+                    <span style="left: 0%;">-50°C</span>
+                    <span class="nominal-label" style="left: 20.00%;">-20°C</span>
+                    <span class="nominal-label" style="left: 80.00%;">60°C</span>
+                    <span style="left: 100%;">100°C</span>
+                </div>
+            </div>
+        </div>
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>
     <script src="{{ url_for('static', filename='frontend/helpers.js') }}"></script>

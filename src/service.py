@@ -111,6 +111,32 @@ def get_payload_data():
     except Exception as e:
         print(f"Error retrieving payload data: {e}")
         return None
+
+def get_wod_data():
+    try:
+        latest_data = db.session.query(WODData).order_by(WODData.timestamp.desc()).first()
+        if not latest_data:
+            print("No WOD data found in the database.")
+            return None
+        
+        wod_values = [
+            latest_data.timestamp,
+            latest_data.mode,
+            latest_data.batt_voltage,
+            latest_data.batt_current,
+            latest_data.current_3v3_bus,
+            latest_data.current_5v_bus,
+            latest_data.temp_comm,
+            latest_data.temp_EPS,
+            latest_data.temp_battery
+        ]
+
+        return wod_values
+    
+    except Exception as e:
+        print(f"Error retrieving WOD data: {e}")
+        return None
+
 def get_to_reset():
     global to_reset 
     global reset_time
