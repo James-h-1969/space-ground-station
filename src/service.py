@@ -1,5 +1,5 @@
 from src.schemas import DataType, State
-from src.models import PayloadData
+from src.models import PayloadData, WODData, AttitudeData
 from src.database import db
 from datetime import datetime, timezone
 
@@ -30,10 +30,28 @@ def store_vals_in_db(data, data_type, time_utc):
             spec_900nm=data[16],
             spec_940nm=data[17],
         )
-    # elif data_type == DataType.ATTITUDE_DATA: TODO. write new data for these 
-
-    # elif data_type == DataType.WOD_DATA:
-    #     ...
+    elif data_type == DataType.ATTITUDE_DATA:
+        new_data = AttitudeData(
+            timestamp=time_utc,
+            theta=data['theta'],
+            phi=data['phi'],
+            sigma=data['sigma'],
+            theta_dot=data['theta_dot'],
+            phi_dot=data['phi_dot'],
+            sigma_dot=data['sigma_dot']
+        )
+    elif data_type == DataType.WOD_DATA:
+        new_data = WODData(
+            timestamp=time_utc,
+            mode=data['mode'],
+            batt_voltage=data['batt_voltage'],
+            batt_current=data['batt_current'],
+            current_3v3_bus=data['current_3v3_bus'],
+            current_5v_bus=data['current_5v_bus'],
+            temp_comm=data['temp_comm'],
+            temp_EPS=data['temp_EPS'],
+            temp_battery=data['temp_battery']
+        )
 
     try:
         db.session.add(new_data)

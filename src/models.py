@@ -49,8 +49,28 @@ class PayloadData(db.Model):
             "spec_940nm": self.spec_940nm,
         }
     
-# class WODData(db.Model):
-#     ... #TODO. write a wod model
+class WODData(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    timestamp = db.Column(db.String(64), nullable=False)
 
-# class AttitudeData(db.Model):
-#     ... #TODO. write an attitude model
+    mode = db.Column(db.Integer, nullable=False)
+    batt_voltage = db.Column(db.Float, nullable=False)
+    batt_current = db.Column(db.Float, nullable=False)
+    current_3v3_bus = db.Column(db.Float, nullable=False)
+    current_5v_bus = db.Column(db.Float, nullable=False)
+
+    temp_comm = db.Column(db.Float, nullable=False)
+    temp_EPS = db.Column(db.Float, nullable=False)
+    temp_battery = db.Column(db.Float, nullable=False)
+
+class AttitudeData(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    timestamp = db.Column(db.String(64), nullable=False)
+
+    theta = db.Column(db.Float, nullable=False)
+    phi = db.Column(db.Float, nullable=False)
+    sigma = db.Column(db.Float, nullable=False)
+
+    theta_dot = db.Column(db.Float, nullable=False)
+    phi_dot = db.Column(db.Float, nullable=False)
+    sigma_dot = db.Column(db.Float, nullable=False)
