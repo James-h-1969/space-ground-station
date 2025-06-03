@@ -5,9 +5,15 @@ function updateWOD(data) {
     document.getElementById("batt-current").innerText = `${data["bat-current"].toFixed(2)} A`;
     document.getElementById("3v3-current").innerText = `${data["3v3-current"].toFixed(2)} A`;
     document.getElementById("5v-current").innerText = `${data["5v-current"].toFixed(2)} A`;
-    document.getElementById("comm-temp").innerText = `${data["comm-temp"].toFixed(1)} °C`;
-    document.getElementById("eps-temp").innerText = `${data["eps-temp"].toFixed(1)} °C`;
-    document.getElementById("batt-temp").innerText = `${data["batt-temp"].toFixed(1)} °C`;
+    const commTemp = data["comm-temp"];
+    document.getElementById("comm-temp").innerText = `${commTemp.toFixed(1)} °C`;
+    document.getElementById("comm-temp").className = `temp-value ${commTemp >= -30 && commTemp <= 85 ? 'green' : 'red'}`;
+    const epsTemp = data["eps-temp"];
+    document.getElementById("eps-temp").innerText = `${epsTemp.toFixed(1)} °C`;
+    document.getElementById("eps-temp").className = `temp-value ${epsTemp >= -40 && epsTemp <= 80 ? 'green' : 'red'}`;
+    const battTemp = data["batt-temp"];
+    document.getElementById("batt-temp").innerText = `${battTemp.toFixed(1)} °C`;
+    document.getElementById("batt-temp").className = `temp-value ${battTemp >= -20 && battTemp <= 60 ? 'green' : 'red'}`;
 
     setSliderPosition("comm-temp-slider", data["comm-temp"]);
     setSliderPosition("eps-temp-slider", data["eps-temp"]);

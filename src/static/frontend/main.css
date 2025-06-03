@@ -270,8 +270,6 @@ canvas {
     transition: width 0.3s ease;
 }
 
-
-
 .slider-track {
     position: relative;
     background: linear-gradient(to right, darkred, green 40% 60%, darkred);
@@ -287,15 +285,15 @@ canvas {
     height: 100%;
     background-color: rgba(0,255,0,0.25);
     z-index: 1;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-left: 1px solid greenyellow;
+    border-right: 1px solid greenyellow;
 }
 
 .slider-value {
     position: absolute;
     top: 0;
     height: 100%;
-    width: 2px;
+    width: 5px;
     background-color: white;
     z-index: 2;
 }
@@ -320,3 +318,17 @@ canvas {
     font-weight: bold;
 }
 
+.temp-value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95em;
+    margin-top: 4px;
+}
+
+.temp-value.green {
+    color: #9f9;
+}
+
+.temp-value.red {
+    color: #f55;
+}

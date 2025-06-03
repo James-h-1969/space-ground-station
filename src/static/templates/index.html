@@ -100,9 +100,10 @@
 
             <!-- Comm Temp -->
             <div class="label">Comm Temp</div>
+            <div id="comm-temp" class="temp-value">--</div>
             <div class="slider-wrapper">
                 <div class="slider-track" data-min="-50" data-max="100">
-                    <div class="slider-nominal" style="left: 13.3%; width: 76.67%;"></div>
+                    <div class="slider-nominal" style="left: 13.33%; width: 76.67%;"></div>
                     <div id="comm-temp-slider" class="slider-value"></div>
                 </div>
                 <div class="slider-labels">
@@ -111,14 +112,14 @@
                     <span class="nominal-label" style="left: 90%;">85°C</span>
                     <span style="left: 100%;">100°C</span>
                 </div>
-                <div id="comm-temp" class="wod-value">--</div>
             </div>
 
             <!-- EPS Temp -->
             <div class="label">EPS Temp</div>
+            <div id="eps-temp" class="temp-value">--</div>
             <div class="slider-wrapper">
                 <div class="slider-track" data-min="-50" data-max="100">
-                    <div class="slider-nominal" style="left: 6.7%; width: 80%;"></div>
+                    <div class="slider-nominal" style="left: 6.67%; width: 80.00%;"></div>
                     <div id="eps-temp-slider" class="slider-value"></div>
                 </div>
                 <div class="slider-labels">
@@ -127,14 +128,14 @@
                     <span class="nominal-label" style="left: 86.67%;">80°C</span>
                     <span style="left: 100%;">100°C</span>
                 </div>
-                <div id="eps-temp" class="wod-value">--</div>
             </div>
 
             <!-- Battery Temp -->
             <div class="label">Battery Temp</div>
+            <div id="batt-temp" class="temp-value">--</div>
             <div class="slider-wrapper">
                 <div class="slider-track" data-min="-50" data-max="100">
-                    <div class="slider-nominal" style="left: 20%; width: 53.33%;"></div>
+                    <div class="slider-nominal" style="left: 20.00%; width: 53.33%;"></div>
                     <div id="batt-temp-slider" class="slider-value"></div>
                 </div>
                 <div class="slider-labels">
@@ -143,10 +144,8 @@
                     <span class="nominal-label" style="left: 80.00%;">60°C</span>
                     <span style="left: 100%;">100°C</span>
                 </div>
-                <div id="batt-temp" class="wod-value">--</div>
             </div>
         </div>
-    </div>
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>
     <script src="{{ url_for('static', filename='frontend/helpers.js') }}"></script>
