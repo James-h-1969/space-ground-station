@@ -427,3 +427,20 @@ canvas {
     height: 400px;
     border: 1px solid white; /* optional: helps you see the canvas bounds */
 }
+
+
+.ground-trace-wrapper {
+    width: 800px;
+    margin: 30px auto 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.ground-trace-wrapper h3 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 10px;
+}
+

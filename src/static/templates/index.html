@@ -53,12 +53,9 @@
         <canvas id="intensitySpectrum" width="800" height="200"></canvas>
         <canvas id="absorptionSpectrum" width="800" height="50"></canvas>
     </div>
+    
     <div id="attitude" class="tab-content">
         <h2>Attitude Data</h2>
-        <p>Display attitude-related information here.</p>
-
-        <!-- Euler Angles and Rates -->
-        <!-- Euler Angles, Angle Rates, and Velocity -->
         <div class="attitude-boxes">
             <div class="attitude-box">
                 <h3>Euler Angles (°)</h3>
@@ -103,11 +100,7 @@
         <!-- Satellite 3D Canvas -->
         <h3>Satellite Render</h3>
         <canvas id="satelliteCanvas" width="800" height="400"></canvas>
-
-        <!-- Load three.js first -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-        <!-- Then load your custom render/logic script -->
         <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
 
