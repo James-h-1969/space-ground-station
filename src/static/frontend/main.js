@@ -42,7 +42,7 @@ async function fetchState() {
 async function fetchUTCTime(){
     const response = await fetch('/utc_time');
     const data = await response.json();
-    document.getElementById('utcTime').innerText = data.utc_time;
+    document.getElementById('utcTime').innerText = data.utc_time + ' UTC';
 }
 
 setInterval(fetchUTCTime, 1000);
