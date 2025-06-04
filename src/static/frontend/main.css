@@ -285,8 +285,8 @@ canvas {
     height: 100%;
     background-color: rgba(0,255,0,0.25);
     z-index: 1;
-    border-left: 1px solid greenyellow;
-    border-right: 1px solid greenyellow;
+    border-left: 1px solid yellow;
+    border-right: 1px solid yellow;
 }
 
 .slider-value {

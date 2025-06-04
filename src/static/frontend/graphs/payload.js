@@ -15,7 +15,7 @@ function plotSpectrums() {
         ctx1.font = "16px sans-serif";
         ctx1.textAlign = "center";
         ctx1.textBaseline = "middle";
-        ctx1.fillText("Set state as PAYLOAD to display results.", intensityCanvas.width / 2, intensityCanvas.height / 2);
+        ctx1.fillText("Set state as PAYLOAD to record & display results.", intensityCanvas.width / 2, intensityCanvas.height / 2);
 
         return;
     }
