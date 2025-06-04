@@ -8,22 +8,22 @@ import math
 def generate_fake_attitude_data():
     """Generate fake attitude data payload for testing."""
     # Generate realistic attitude angles (in degrees, converted to radians)
-    theta = random.uniform(-180, 180)  # Roll angle
-    phi = random.uniform(-90, 90)      # Pitch angle  
-    sigma = random.uniform(-180, 180)  # Yaw angle
+    phi = random.uniform(-180, 180)  # Roll angle
+    theta = random.uniform(-90, 90)      # Pitch angle  
+    psi = random.uniform(-180, 180)  # Yaw angle
     
     # Generate realistic angular velocities (degrees/second, converted to radians/second)
-    theta_dot = random.uniform(-10, 10)  # Roll rate
-    phi_dot = random.uniform(-10, 10)    # Pitch rate
-    sigma_dot = random.uniform(-10, 10)  # Yaw rate
+    phi_dot = random.uniform(-10, 10)  # Roll rate
+    theta_dot = random.uniform(-10, 10)    # Pitch rate
+    psi_dot = random.uniform(-10, 10)  # Yaw rate
     
     data = {
-        "theta": round(math.radians(theta), 6),      # Convert to radians
-        "phi": round(math.radians(phi), 6),          # Convert to radians
-        "sigma": round(math.radians(sigma), 6),      # Convert to radians
-        "theta_dot": round(math.radians(theta_dot), 6),  # Convert to radians/second
-        "phi_dot": round(math.radians(phi_dot), 6),      # Convert to radians/second
-        "sigma_dot": round(math.radians(sigma_dot), 6)   # Convert to radians/second
+        "phi": phi,      
+        "theta": theta,          
+        "psi": psi,     
+        "phi_dot": phi_dot,  
+        "theta_dot": theta_dot,      
+        "psi_dot": psi_dot  
     }
     return data
 

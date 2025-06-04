@@ -35,12 +35,12 @@ def store_vals_in_db(data, data_type, time_utc):
     elif data_type == DataType.ATTITUDE_DATA:
         new_data = AttitudeData(
             timestamp=time_utc,
-            theta=data['theta'],
             phi=data['phi'],
-            sigma=data['sigma'],
-            theta_dot=data['theta_dot'],
+            theta=data['theta'],
+            psi=data['psi'],
             phi_dot=data['phi_dot'],
-            sigma_dot=data['sigma_dot']
+            theta_dot=data['theta_dot'],
+            psi_dot=data['psi_dot']
         )
     elif data_type == DataType.WOD_DATA:
         new_data = WODData(
@@ -135,6 +135,28 @@ def get_wod_data():
     
     except Exception as e:
         print(f"Error retrieving WOD data: {e}")
+        return None
+
+def get_attitude_data():
+    try:
+        latest_data = db.session.query(AttitudeData).order_by(AttitudeData.timestamp.desc()).first()
+        if not latest_data:
+            print("No Attitude data found in the database.")
+            return None
+        
+        attitude_values = [
+            latest_data.phi,
+            latest_data.theta,
+            latest_data.psi,
+            latest_data.phi_dot,
+            latest_data.theta_dot,
+            latest_data.psi_dot
+        ]
+
+        return attitude_values
+
+    except Exception as e:
+        print(f"Error retrieving Attitude data: {e}")
         return None
 
 def get_to_reset():

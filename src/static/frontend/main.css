@@ -385,3 +385,45 @@ canvas {
     margin-top: 4px;
     color: #fff;
 }
+
+
+.attitude-boxes {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.attitude-box {
+    background-color: #1c1c1c;
+    border: 1px solid #444;
+    padding: 16px 20px;
+    border-radius: 8px;
+    min-width: 200px;
+    color: white;
+    flex-grow: 1;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.attitude-box h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.attitude-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+#satelliteCanvas {
+    display: block;
+    width: 800px;
+    height: 400px;
+    border: 1px solid white; /* optional: helps you see the canvas bounds */
+}

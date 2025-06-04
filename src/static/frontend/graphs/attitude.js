@@ -5,18 +5,19 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     75,
     canvas.clientWidth / canvas.clientHeight,
-    0.1,
+    0.01,
     1000
 );
 
 // Renderer using the existing canvas
 const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-renderer.setClearColor(0x000000); // black background
+renderer.setSize(800, 400)
+renderer.setClearColor(0x000000); 
 
 // Add axis helper centered at origin
 const axesHelper = new THREE.AxesHelper(2);
 scene.add(axesHelper);
+
 
 
 // Create a material for the CubeSat body
@@ -36,24 +37,23 @@ const body = new THREE.Mesh(bodyGeometry, [
 ]);
 scene.add(body);
 
+const debugGeometry = new THREE.BoxGeometry(1, 1, 1);
+const debugMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const debugCube = new THREE.Mesh(debugGeometry, debugMaterial);
+scene.add(debugCube);
+
 // Position the camera so we can see the CubeSat
-camera.position.z = 5;
+camera.position.set(0, 0, 5);
+camera.lookAt(0, 0, 0);
 
 // Example satellite attitude angles (in degrees)
 let pitch = 0, yaw = 0, roll = 0;
 
 // Function to update the CubeSat's rotation based on attitude
 function updateAttitude() {
-    // For example, simulate changes in yaw
-    yaw += 1;  // Rotate the CubeSat (yaw increases)
-    if (yaw > 360) yaw = 0; // Reset yaw after full rotation
-    pitch += 1;  // Rotate the CubeSat (yaw increases)
-    if (pitch > 360) pitch = 0; // Reset yaw after full rotation
-
-    // Convert pitch, yaw, and roll from degrees to radians
-    body.rotation.x = THREE.MathUtils.degToRad(pitch);   // Pitch: x-axis rotation
-    body.rotation.y = THREE.MathUtils.degToRad(yaw);     // Yaw: y-axis rotation
-    body.rotation.z = THREE.MathUtils.degToRad(roll);    // Roll: z-axis rotation
+    body.rotation.x = THREE.MathUtils.degToRad(pitch);   // Pitch: x-axis
+    body.rotation.y = THREE.MathUtils.degToRad(yaw);     // Yaw: y-axis
+    body.rotation.z = THREE.MathUtils.degToRad(roll);    // Roll: z-axis
 }
 
 function addStars() {
@@ -97,3 +97,33 @@ setInterval(() => {
     const vz = Math.random() * 2 - 1;
     updateVelocityDisplay(vx, vy, vz);
 }, 1000);
+
+
+function fetchAttitudeData() {
+    fetch('/attitude')
+        .then(res => res.json())
+        .then(data => {
+            const attitude = data.attitude_data;
+            if (!attitude) return;
+
+            // Assign values
+            const [phi, theta, psi, phi_dot, theta_dot, psi_dot] = attitude;
+
+            // Display values
+            document.getElementById('rollVal').textContent = phi.toFixed(2);
+            document.getElementById('pitchVal').textContent = theta.toFixed(2);
+            document.getElementById('yawVal').textContent = psi.toFixed(2);
+            document.getElementById('rollRate').textContent = phi_dot.toFixed(2);
+            document.getElementById('pitchRate').textContent = theta_dot.toFixed(2);
+            document.getElementById('yawRate').textContent = psi_dot.toFixed(2);
+
+            // Update the 3D model orientation (degrees to radians)
+            roll = phi;
+            pitch = theta;
+            yaw = psi;
+        })
+        .catch(err => console.error("Error fetching attitude data:", err));
+}
+
+// Update every 2 seconds
+setInterval(fetchAttitudeData, 2000);

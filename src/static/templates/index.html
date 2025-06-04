@@ -56,25 +56,64 @@
     <div id="attitude" class="tab-content">
         <h2>Attitude Data</h2>
         <p>Display attitude-related information here.</p>
+
+        <!-- Euler Angles and Rates -->
+        <!-- Euler Angles, Angle Rates, and Velocity -->
+        <div class="attitude-boxes">
+            <div class="attitude-box">
+                <h3>Euler Angles (°)</h3>
+                <div class="attitude-row">
+                    <span>ϕ (Roll):</span><span id="rollVal">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>θ (Pitch):</span><span id="pitchVal">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>ψ (Yaw):</span><span id="yawVal">--</span>
+                </div>
+            </div>
+
+            <div class="attitude-box">
+                <h3>Euler Angle Rates (°/s)</h3>
+                <div class="attitude-row">
+                    <span>ϕ̇ (Roll rate):</span><span id="rollRate">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>θ̇ (Pitch rate):</span><span id="pitchRate">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>ψ̇ (Yaw rate):</span><span id="yawRate">--</span>
+                </div>
+            </div>
+
+            <div class="attitude-box">
+                <h3>Velocity (m/s)</h3>
+                <div class="attitude-row">
+                    <span>X:</span><span id="velX">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>Y:</span><span id="velY">--</span>
+                </div>
+                <div class="attitude-row">
+                    <span>Z:</span><span id="velZ">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Satellite 3D Canvas -->
+        <h3>Satellite Render</h3>
         <canvas id="satelliteCanvas" width="800" height="400"></canvas>
 
-        <div class="velocity-display">
-            <p><strong>Velocity (m/s):</strong></p>
-            <p>X: <span id="velX">0.00</span></p>
-            <p>Y: <span id="velY">0.00</span></p>
-            <p>Z: <span id="velZ">0.00</span></p>
-        </div>
+        <!-- Load three.js first -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+        <!-- Then load your custom render/logic script -->
         <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
+
     <div id="wod" class="tab-content">
         <h2>WOD Data</h2>
         <script src="{{ url_for('static', filename='frontend/graphs/wod.js') }}"></script>
-
-        <!-- <div class="wod-group state-group">
-            <h3>Operational State</h3>
-            <div id="mode" class="wod-value">--</div>
-        </div> -->
 
         <div class="wod-group battery-group">
             <h3>Battery</h3>
@@ -192,6 +231,5 @@
 
     <script src="{{ url_for('static', filename='frontend/main.js') }}"></script>
     <script src="{{ url_for('static', filename='frontend/helpers.js') }}"></script>
-
 </body>
 </html>
