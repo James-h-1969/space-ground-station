@@ -385,3 +385,37 @@ canvas {
     margin-top: 4px;
     color: #fff;
 }
+
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.team-member {
+    background-color: white; 
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.name {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #333;
+}
+
+.role {
+    font-size: 0.9em;
+    color: #666;
+}
