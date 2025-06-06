@@ -35,6 +35,6 @@ def send_data(data, data_type, time_utc=None):
 if __name__ == "__main__":
     while True:
         payload = generate_fake_payload()
-        response = send_data(payload, "PAYLOAD_DATA")
+        response = send_data(payload, 0x0F)
         print(f"Sent data: {payload}, Response: {response.__dict__}")
         time.sleep(1)

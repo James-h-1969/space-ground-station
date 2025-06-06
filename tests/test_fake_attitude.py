@@ -49,7 +49,7 @@ def send_data(data, data_type, time_utc=None):
 if __name__ == "__main__":
     while True:
         payload = generate_fake_attitude_data()
-        response = send_data(payload, "ATTITUDE_DATA")
+        response = send_data(payload, 0x09)
         print(f"Sent attitude data: {payload}")
         print(f"Response: {response.status_code} - {response.text}")
         time.sleep(5)
