@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPosition = 0;
 
     const backgroundImage = new Image();
-    backgroundImage.src = 'static/images/ground-trace.jpg'; // Make sure this path is correct
+    backgroundImage.src = 'static/images/ground-trace-background.jpg'; // Make sure this path is correct
 
     // Wait until the image is fully loaded before creating the chart
     backgroundImage.onload = () => {

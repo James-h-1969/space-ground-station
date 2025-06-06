@@ -67,10 +67,10 @@ class AttitudeData(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     timestamp = db.Column(db.String(64), nullable=False)
 
-    theta = db.Column(db.Float, nullable=False)
     phi = db.Column(db.Float, nullable=False)
-    sigma = db.Column(db.Float, nullable=False)
+    theta = db.Column(db.Float, nullable=False)
+    psi = db.Column(db.Float, nullable=False)
 
-    theta_dot = db.Column(db.Float, nullable=False)
     phi_dot = db.Column(db.Float, nullable=False)
-    sigma_dot = db.Column(db.Float, nullable=False)
+    theta_dot = db.Column(db.Float, nullable=False)
+    psi_dot = db.Column(db.Float, nullable=False)

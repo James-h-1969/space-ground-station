@@ -285,8 +285,8 @@ canvas {
     height: 100%;
     background-color: rgba(0,255,0,0.25);
     z-index: 1;
-    border-left: 1px solid greenyellow;
-    border-right: 1px solid greenyellow;
+    border-left: 1px solid yellow;
+    border-right: 1px solid yellow;
 }
 
 .slider-value {
@@ -386,6 +386,63 @@ canvas {
     color: #fff;
 }
 
+
+.attitude-boxes {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.attitude-box {
+    background-color: #1c1c1c;
+    border: 1px solid #444;
+    padding: 16px 20px;
+    border-radius: 8px;
+    min-width: 200px;
+    color: white;
+    flex-grow: 1;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.attitude-box h3 {
+    margin-top: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.attitude-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+#satelliteCanvas {
+    display: block;
+    width: 800px;
+    height: 400px;
+    border: 1px solid white; /* optional: helps you see the canvas bounds */
+}
+
+
+.ground-trace-wrapper {
+    width: 800px;
+    margin: 30px auto 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.ground-trace-wrapper h3 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 10px;
+}
 
 .team-grid {
     display: grid;
