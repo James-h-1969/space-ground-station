@@ -14,19 +14,22 @@ def index():
 def receive_data():
     time_utc = request.json.get("time_utc")
     data = request.json.get("data")
-    data_type = request.json.get("data_type")
+    data_type = int(request.json.get("data_type"))
 
     if not data or not data_type or not time_utc:
+        print("Missing data or data type!")
         return jsonify({"error": "Missing data or data_type"}), 400
 
     try:
         DataType(data_type)
     except ValueError:
+        print("Invalid data type!")
         return jsonify({"error": "Invalid data type"}), 400
 
     if store_vals_in_db(data, data_type, time_utc):
         return jsonify({"status": "saved into db successfully"}), 200
     else:
+        print("Failed to save in db!")
         return jsonify({"status": "failed to save into db"}), 400
     
 @routes_bp.route("/state", methods=["GET"])
