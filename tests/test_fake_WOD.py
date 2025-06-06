@@ -40,7 +40,7 @@ def send_data(data, data_type, time_utc=None):
 if __name__ == "__main__":
     while True:
         payload = generate_fake_wod_data()
-        response = send_data(payload, "WOD_DATA")
+        response = send_data(payload, 0x0E)
         print(f"Sent WOD data: {payload}")
         print(f"Response: {response.status_code} - {response.text}")
         time.sleep(5)
