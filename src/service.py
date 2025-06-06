@@ -8,6 +8,7 @@ to_reset = False
 reset_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def store_vals_in_db(data, data_type, time_utc):
+    print(data, data_type, time_utc)
     data_type = DataType(data_type)
 
     if data_type == DataType.PAYLOAD_DATA:
