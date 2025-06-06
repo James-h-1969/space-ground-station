@@ -52,4 +52,4 @@ if __name__ == "__main__":
         response = send_data(payload, 0x09)
         print(f"Sent attitude data: {payload}")
         print(f"Response: {response.status_code} - {response.text}")
-        time.sleep(5)
+        time.sleep(2)
