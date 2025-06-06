@@ -476,3 +476,12 @@ canvas {
     font-size: 0.9em;
     color: #666;
 }
+
+
+.chart-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+}

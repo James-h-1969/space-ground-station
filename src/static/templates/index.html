@@ -142,25 +142,23 @@
                     <span>ψ̇ (Yaw rate):</span><span id="yawRate">--</span>
                 </div>
             </div>
-
-            <div class="attitude-box">
-                <h3>Velocity (m/s)</h3>
-                <div class="attitude-row">
-                    <span>X:</span><span id="velX">--</span>
-                </div>
-                <div class="attitude-row">
-                    <span>Y:</span><span id="velY">--</span>
-                </div>
-                <div class="attitude-row">
-                    <span>Z:</span><span id="velZ">--</span>
-                </div>
-            </div>
         </div>
 
-        <!-- Satellite 3D Canvas -->
-        <h3>Satellite Render</h3>
-        <canvas id="satelliteCanvas" width="800" height="400"></canvas>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <!-- Euler Angles Chart -->
+        <div class="chart-container">
+            <h3>Euler Angles (°)</h3>
+            <canvas id="eulerChart"></canvas>
+        </div>
+
+        <!-- Euler Angle Rates Chart -->
+        <div class="chart-container">
+            <h3>Euler Angle Rates (°/s)</h3>
+            <canvas id="eulerRateChart"></canvas>
+        </div>
+
+        <!-- Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script src="{{ url_for('static', filename='frontend/graphs/attitude.js') }}"></script>
     </div>
 
