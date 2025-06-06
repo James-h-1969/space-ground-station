@@ -1,10 +1,9 @@
 from flask import Blueprint, request, jsonify, render_template
 from src.models import PayloadData
 from src.schemas import DataType
-from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time, get_payload_data, get_to_reset, change_reset, get_wod_data, get_attitude_data
+from src.service import store_vals_in_db, get_state, change_state, get_current_utc_time, get_payload_data, get_to_reset, change_reset, get_wod_data, get_attitude_data, check_ax_25
 
 routes_bp = Blueprint("routes_bp", __name__)
-
 
 @routes_bp.route("/", methods=["GET"])
 def index():
@@ -12,6 +11,9 @@ def index():
 
 @routes_bp.route("/data", methods=["POST"])
 def receive_data():
+    if check_ax_25(request.json) < 0:
+        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
+
     time_utc = request.json.get("time_utc")
     data = request.json.get("data")
     data_type = int(request.json.get("data_type"))
@@ -34,6 +36,8 @@ def receive_data():
     
 @routes_bp.route("/state", methods=["GET"])
 def get_current_state():
+    if check_ax_25(request.json) < 0:
+        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
     print("Request received! Getting state!")
     return jsonify({"status":"success", "state":get_state()}), 200
 
@@ -56,6 +60,8 @@ def get_most_recent_payload():
 
 @routes_bp.route("/to_reset", methods=["GET"])
 def to_reset():
+    if check_ax_25(request.json) < 0:
+        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
     to_reset, reset_time = get_to_reset()
     return jsonify({"status":"success", "to_reset":to_reset, "reset_time":reset_time}), 200
 

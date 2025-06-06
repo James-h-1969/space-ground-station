@@ -7,6 +7,12 @@ current_state = State.INIT
 to_reset = False
 reset_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+def check_ax_25(response_json):
+    if response_json["source_address"] != "LTIC01" or response_json["destination_address"] != "LTICGS":
+        print(f"Error: AX25 header not used!")
+        return -1 
+    return 0
+
 def store_vals_in_db(data, data_type, time_utc):
     print(data, data_type, time_utc)
     data_type = DataType(data_type)
