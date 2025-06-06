@@ -12,7 +12,7 @@ def index():
 @routes_bp.route("/data", methods=["POST"])
 def receive_data():
     if check_ax_25(request.json) < 0:
-        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
+        return jsonify({"error":"addresses incorrect in AX25 header","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
 
     time_utc = request.json.get("time_utc")
     data = request.json.get("data")
@@ -20,26 +20,26 @@ def receive_data():
 
     if not data or not data_type or not time_utc:
         print("Missing data or data type!")
-        return jsonify({"error": "Missing data or data_type"}), 400
+        return jsonify({"error": "Missing data or data_type","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
 
     try:
         DataType(data_type)
     except ValueError:
         print("Invalid data type!")
-        return jsonify({"error": "Invalid data type"}), 400
+        return jsonify({"error": "Invalid data type","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
 
     if store_vals_in_db(data, data_type, time_utc):
-        return jsonify({"status": "saved into db successfully"}), 200
+        return jsonify({"status": "saved into db successfully","source_address":"LTICGS", "destination_address":"LTIC01"}), 200
     else:
         print("Failed to save in db!")
-        return jsonify({"status": "failed to save into db"}), 400
+        return jsonify({"status": "failed to save into db","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
     
 @routes_bp.route("/state", methods=["GET"])
 def get_current_state():
     if check_ax_25(request.json) < 0:
-        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
+        return jsonify({"error":"addresses incorrect in AX25 header","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
     print("Request received! Getting state!")
-    return jsonify({"status":"success", "state":get_state()}), 200
+    return jsonify({"status":"success", "state":get_state(),"source_address":"LTICGS", "destination_address":"LTIC01"}), 200
 
 @routes_bp.route("/state", methods=["POST"])
 def change_current_state():
@@ -61,9 +61,9 @@ def get_most_recent_payload():
 @routes_bp.route("/to_reset", methods=["GET"])
 def to_reset():
     if check_ax_25(request.json) < 0:
-        return jsonify({"error":"addresses incorrect in AX25 header"}), 400
+        return jsonify({"error":"addresses incorrect in AX25 header","source_address":"LTICGS", "destination_address":"LTIC01"}), 400
     to_reset, reset_time = get_to_reset()
-    return jsonify({"status":"success", "to_reset":to_reset, "reset_time":reset_time}), 200
+    return jsonify({"status":"success", "to_reset":to_reset, "reset_time":reset_time,"source_address":"LTICGS", "destination_address":"LTIC01"}), 200
 
 @routes_bp.route("/to_reset", methods=["POST"])
 def change_to_reset():
